@@ -12,9 +12,7 @@ const { HttpInstrumentation } = require("@opentelemetry/instrumentation-http");
 const { registerInstrumentations } = require("@opentelemetry/instrumentation");
 //Exporter
 module.exports = (serviceName) => {
-   const exporter = new JaegerExporter({
-       endpoint: 'http://localhost:14268/api/traces'
-   });
+   const exporter = new JaegerExporter();
    const provider = new NodeTracerProvider({
        resource: new Resource({
            [SemanticResourceAttributes.SERVICE_NAME]: serviceName,
